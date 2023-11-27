@@ -15,29 +15,29 @@ const TechOn = () => {
     } = useForm()
     const onSubmit = (data) => {
         console.log(data)
-        
-            
-
-                const userInfo = { name: data.name,  photo: data.photourl,experience:data.experience,caregory:data.caregory,status:"pending" }
-                publicApi.post('/teacher', userInfo)
-                    .then(res => {
-                        if (res.data.insertedId) {
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Your teaching request has been sent.",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            // reset()
-                        }
-                    })
 
 
-                
-              
 
-          
+        const userInfo = { name: data.name, photo: data.photourl, experience: data.experience, title:data.title,caregory: data.caregory,email:user?.email, status: "pending" }
+        publicApi.post('/teacher', userInfo)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your teaching request has been sent.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    // reset()
+                }
+            })
+
+
+
+
+
+
     }
     return (
         <div style={{ backgroundColor: 'rgb(34, 21, 59)' }} className="hero min-h-screen">
@@ -75,6 +75,14 @@ const TechOn = () => {
                                 <option>Intermediate</option>
                                 <option>Experinced</option>
                             </select>
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-white">Title</span>
+                            </label>
+                            <input  {...register("title", { required: true })} type="text" placeholder="title" className="input input-bordered" />
+                            {errors.title && <span className="text-red-700">This  field is required</span>}
+
                         </div>
                         <div className="form-control">
                             <label className="label">

@@ -2,13 +2,18 @@ import { useContext } from "react";
 import { classRoomcontext } from "../Providers/AuthContext";
 import { useNavigate } from "react-router-dom";
 import usePublicApi from "./usePublicApi";
+import axios from "axios";
 
+
+const axio_url = axios.create({
+  baseURL: 'http://localhost:5000'
+})
 
 const usePrivateApi = () => {
     const {logOut} = useContext(classRoomcontext)
     const navigate = useNavigate()
 
-    usePublicApi.interceptors.request.use(function (config) {
+    axio_url.interceptors.request.use(function (config) {
         const token = localStorage.getItem("accessToken");
         config.headers.authorization = `Bearer ${token}`;
 
@@ -19,7 +24,7 @@ const usePrivateApi = () => {
         return Promise.reject(error);
       });
 
-      usePublicApi.interceptors.response.use(function (response) {
+      axio_url.interceptors.response.use(function (response) {
         // Any status code that lie within the range of 2xx cause this function to trigger
         // Do something with response data
         return response;
@@ -35,6 +40,7 @@ const usePrivateApi = () => {
         }
         return Promise.reject(error);
       });
+      return axio_url
 
    
 };

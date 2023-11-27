@@ -61,7 +61,7 @@ const AuthContext = ({children}) => {
 
             else{
                 localStorage.removeItem("accessToken")
-                setLoader(true)
+                setLoader(false)
             }
             
             console.log(user);
@@ -69,7 +69,7 @@ const AuthContext = ({children}) => {
         return ()=>{
             return unsubscribe()
         }
-    },[])
+    },[publicApi])
     
     
     

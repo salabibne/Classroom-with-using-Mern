@@ -11,6 +11,9 @@ import Login from "../Authentication/Login/Login";
 import Registration from "../Authentication/REgistration/Registration";
 import TechOn from "../Teacher/TechOn";
 import PrivateRoutes from "./PrivateRoutes";
+import Dashbord from "../Dashbord/Dashbord";
+import TeacherRequest from "../Dashbord/TeacherRequest/TeacherRequest";
+import Users from "../Dashbord/Users/Users";
 
   const router = createBrowserRouter([
     {
@@ -36,6 +39,20 @@ import PrivateRoutes from "./PrivateRoutes";
         }
       ]
     },
+    {
+      path:"/dashbord",
+      element:<Dashbord></Dashbord>,
+      children :[
+        {
+          path:"/dashbord/teachereq",
+          element:<TeacherRequest></TeacherRequest>
+        },
+        {
+          path:"/dashbord/users",
+          element:<Users></Users>
+        }
+      ]
+    }
   ]);
 
 

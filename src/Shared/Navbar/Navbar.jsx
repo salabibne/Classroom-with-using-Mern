@@ -3,14 +3,21 @@ import { Link, NavLink } from "react-router-dom";
 // import logo from "../../../public/assests/logo/keepup.png"
 import { useContext } from "react";
 import { classRoomcontext } from "../../Providers/AuthContext";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const Navbar = () => {
-    const { user, logOut } = useContext(classRoomcontext)
+    const { user, logOut } = useContext(classRoomcontext);
+    const[isAdmin] = useAdmin()
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/allclass">All Classes</NavLink></li>
         <li><NavLink to="/techon">Tech on KeepUP </NavLink></li>
+
+        {
+            user  && isAdmin &&   <li><NavLink to="/dashbord/teachereq">TeacherRequest</NavLink></li>
+            
+        }
 
 
     </>

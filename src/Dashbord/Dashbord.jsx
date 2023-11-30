@@ -3,10 +3,12 @@ import useAdmin from "../Hooks/useAdmin";
 import { useContext } from "react";
 import { classRoomcontext } from "../Providers/AuthContext";
 import Navbar from "../Shared/Navbar/Navbar";
+import useTeacher from "../Hooks/useTeacher";
 
 
 const Dashbord = () => {
     const [isAdmin] = useAdmin()
+    const [isTeacher] = useTeacher()
     const { user } = useContext(classRoomcontext)
 
     return (
@@ -27,6 +29,10 @@ const Dashbord = () => {
                 <div>
                       {
                         isAdmin &&   <p className="text-white text-center"> Role : admin</p>
+
+                      }
+                      {
+                        isTeacher && <p className="text-white text-center">Role:Teacher</p>
                       }
                     </div>
                 <ul className="menu">
@@ -51,6 +57,25 @@ const Dashbord = () => {
                                 <NavLink to="/dashbord/profile">
 
                                     Profile</NavLink>
+                            </li>
+                        </>
+                    }
+                    {
+                        isTeacher && <>
+                         <li className="text-white">
+                                <NavLink to="/dashbord/addClass">
+
+                                   AddClass</NavLink>
+                            </li>
+                         <li className="text-white">
+                                <NavLink to="/dashbord/myClass">
+
+                                   MyClass</NavLink>
+                            </li>
+                         <li className="text-white">
+                                <NavLink to="/dashbord/teacheProfile">
+
+                                   Profile</NavLink>
                             </li>
                         </>
                     }

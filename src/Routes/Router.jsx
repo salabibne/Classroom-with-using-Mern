@@ -14,6 +14,12 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashbord from "../Dashbord/Dashbord";
 import TeacherRequest from "../Dashbord/TeacherRequest/TeacherRequest";
 import Users from "../Dashbord/Users/Users";
+import AddClass from "../Dashbord/AddClass/AddClass";
+import MyClass from "../Dashbord/MyClass/MyClass";
+import TeacherProfile from "../Dashbord/TeacherProfile/TeacherProfile";
+import UpdateClass from "../Dashbord/UpdateClass/UpdateClass";
+import AllClass from "../Dashbord/AllClass/AllClass";
+import Course from "../Course/Course";
 
   const router = createBrowserRouter([
     {
@@ -36,6 +42,10 @@ import Users from "../Dashbord/Users/Users";
         {
           path:"/techon",
           element:<PrivateRoutes><TechOn></TechOn></PrivateRoutes>
+        },
+        {
+          path:"/student/allclass",
+          element:<Course></Course>
         }
       ]
     },
@@ -48,9 +58,31 @@ import Users from "../Dashbord/Users/Users";
           element:<TeacherRequest></TeacherRequest>
         },
         {
+          path:"/dashbord/allclasses",
+          element:<AllClass></AllClass>
+        },
+        {
           path:"/dashbord/users",
           element:<Users></Users>
-        }
+        },
+        {
+          path:"/dashbord/addClass",
+          element:<AddClass></AddClass>
+        },
+        {
+          path:"/dashbord/myClass",
+          element:<MyClass></MyClass>
+        },
+        {
+          path:"/dashbord/updateClass",
+          element:<UpdateClass></UpdateClass>
+        },
+        {
+          path:"/dashbord/teacheProfile",
+          element:<TeacherProfile></TeacherProfile>
+        },
+       
+       
       ]
     }
   ]);

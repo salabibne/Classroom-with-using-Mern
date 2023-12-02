@@ -53,7 +53,7 @@ const MyClass = () => {
     return (
         <div className="grid grid-cols-3 p-8">
             {
-                classreqs.map(classreq => <div key={classreq._id} className="card w-72 bg-base-100 shadow-xl">
+                classreqs.map(classreq => <div key={classreq._id} className="card w-96 bg-base-100 shadow-xl">
                     <figure><img src={classreq.image} alt="Shoes" /></figure>
                     <div className="card-body">
                         <h2 className="card-title flex">
@@ -72,10 +72,10 @@ const MyClass = () => {
                         <p>Email :{classreq.email}</p>
                         <p>price :{classreq.price}</p>
                         <p>{classreq.description}</p>
-                        <button disabled={classreq.status === "pending"} className="btn w-full">SeeDetails</button>
+                        <Link to ={`/dashbord/myclass/${classreq._id}`}><button  disabled={classreq.status === "pending" || classreq.status === "rejected"} className="btn w-full">SeeDetails</button></Link>
                         <div className="card-actions justify-center">
-                            <Link to="/dashbord/updateClass"><button className="btn btn-outline btn-warning">Update</button></Link>
-                            <button onClick={()=>deleteClass(classreq._id)} className="btn btn-outline btn-error">Delete</button>
+                            <Link to="/dashbord/updateClass"><button disabled={classreq.status === "rejected"} className="btn btn-outline btn-warning">Update</button></Link>
+                            <button disabled={classreq.status === "rejected"} onClick={()=>deleteClass(classreq._id)} className="btn btn-outline btn-error">Delete</button>
                         </div>
 
                     </div>

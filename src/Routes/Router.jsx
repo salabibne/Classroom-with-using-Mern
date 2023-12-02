@@ -20,6 +20,8 @@ import TeacherProfile from "../Dashbord/TeacherProfile/TeacherProfile";
 import UpdateClass from "../Dashbord/UpdateClass/UpdateClass";
 import AllClass from "../Dashbord/AllClass/AllClass";
 import Course from "../Course/Course";
+import ClassDetails from "../Dashbord/ClassDetails/ClassDetails";
+import PopUp from "../Dashbord/PopUp/PopUp";
 
   const router = createBrowserRouter([
     {
@@ -81,6 +83,15 @@ import Course from "../Course/Course";
           path:"/dashbord/teacheProfile",
           element:<TeacherProfile></TeacherProfile>
         },
+        {
+          path:"/dashbord/myclass/:classid",
+          element:<ClassDetails></ClassDetails>
+          
+        },
+        {
+          path:"/dashbord/postAssignment",
+          element:<PopUp></PopUp>
+        }
        
        
       ]

@@ -22,6 +22,8 @@ import AllClass from "../Dashbord/AllClass/AllClass";
 import Course from "../Course/Course";
 import ClassDetails from "../Dashbord/ClassDetails/ClassDetails";
 import PopUp from "../Dashbord/PopUp/PopUp";
+import CourseDetails from "../Course/CourseDetails";
+import MyEnrollClass from "../Dashbord/MyEnrollClass/MyEnrollClass";
 
   const router = createBrowserRouter([
     {
@@ -48,6 +50,10 @@ import PopUp from "../Dashbord/PopUp/PopUp";
         {
           path:"/student/allclass",
           element:<Course></Course>
+        },
+        {
+          path:"/student/classDetails/:id",
+          element:<PrivateRoutes><CourseDetails></CourseDetails></PrivateRoutes>
         }
       ]
     },
@@ -89,9 +95,14 @@ import PopUp from "../Dashbord/PopUp/PopUp";
           
         },
         {
-          path:"/dashbord/postAssignment",
+          path:"/dashbord/postAssignment/:classid",
           element:<PopUp></PopUp>
+        },
+        {
+          path:"/dashbord/myEnrollClass",
+          element:<MyEnrollClass></MyEnrollClass>
         }
+
        
        
       ]

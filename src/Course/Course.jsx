@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import usePublicApi from "../Hooks/usePublicApi";
+import { Link } from "react-router-dom";
 
 
 const Course = () => {
@@ -20,17 +21,18 @@ const Course = () => {
             classreqs.map(classreq => <div key={classreq._id} className="card w-96 bg-base-100 shadow-xl">
                 <figure><img src={classreq.image} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title flex">
+                    <h2 className="card-title text-2xl font-semibold ">
                         {classreq.title}
                        
                     </h2>
-                    <p>Name :{classreq.name}</p>
-                    <p>Email :{classreq.email}</p>
-                    <p>price :{classreq.price}</p>
-                    <p>{classreq.description}</p>
-                    <button disabled={classreq.status === "pending"} className="btn btn-outline w-full">SeeDetails</button>
-                    <button  className="btn btn-outline w-full">Enroll</button>
-
+                    <p className="text-gray-500 text-lg">Instructor Name  :{classreq.name}</p>
+                    
+                    <p className="text-lg">price :{classreq.price}Tk</p>
+                    
+                   
+                    <p className="text-lg">Total EnrollMent:</p>
+                    <Link to={`/student/classDetails/${classreq._id}`}><button disabled={classreq.status === "pending"} className="btn btn-outline w-full">SeeDetails & Enroll</button></Link>
+                   
                    
 
                 </div>

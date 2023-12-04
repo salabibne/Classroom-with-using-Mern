@@ -4,11 +4,14 @@ import { useContext } from "react";
 import { classRoomcontext } from "../Providers/AuthContext";
 import Navbar from "../Shared/Navbar/Navbar";
 import useTeacher from "../Hooks/useTeacher";
+import useStudent from "../Hooks/useStudent";
 
 
 const Dashbord = () => {
     const [isAdmin] = useAdmin()
     const [isTeacher] = useTeacher()
+    const [isStudent] = useStudent()
+
     const { user } = useContext(classRoomcontext)
 
     return (
@@ -22,19 +25,22 @@ const Dashbord = () => {
 
 
                     </div>
-                   
+
 
 
                 </div>
                 <div>
-                      {
-                        isAdmin &&   <p className="text-white text-center"> Role : admin</p>
+                    {
+                        isAdmin && <p className="text-white text-center"> Role : admin</p>
 
-                      }
-                      {
+                    }
+                    {
                         isTeacher && <p className="text-white text-center">Role:Teacher</p>
-                      }
-                    </div>
+                    }
+                    {
+                        isStudent && <p className="text-white text-center">Role:Student</p>
+                    }
+                </div>
                 <ul className="menu">
                     {
                         isAdmin && <>
@@ -62,31 +68,46 @@ const Dashbord = () => {
                     }
                     {
                         isTeacher && <>
-                         <li className="text-white">
+                            <li className="text-white">
                                 <NavLink to="/dashbord/addClass">
 
-                                   AddClass</NavLink>
+                                    AddClass</NavLink>
                             </li>
-                         <li className="text-white">
+                            <li className="text-white">
                                 <NavLink to="/dashbord/myClass">
 
-                                   MyClass</NavLink>
+                                    MyClass</NavLink>
                             </li>
-                         <li className="text-white">
+                            <li className="text-white">
                                 <NavLink to="/dashbord/teacheProfile">
 
-                                   Profile</NavLink>
+                                    Profile</NavLink>
                             </li>
                         </>
                     }
+                    {
+                        isStudent && <>
+                            <li className="text-white">
+                                <NavLink to="/dashbord/myEnrollClass">
+
+                                    My Enroll Class</NavLink>
+                            </li>
+                            <li className="text-white">
+                                <NavLink to="/dashbord/studentProfile">
+
+                                    MyProfile</NavLink>
+                            </li>
+                        </>
+                    }
+
 
                 </ul>
             </div>
 
             <div className="flex-1 py-4">
-                
+
                 <Outlet></Outlet>
-                
+
             </div>
 
 

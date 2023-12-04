@@ -1,15 +1,38 @@
 import { useForm } from "react-hook-form";
 import { AiOutlineProfile } from "react-icons/ai";
+import usePrivateApi from "../../Hooks/usePrivateApi";
+import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const PopUp = () => {
+    const{classid} = useParams()
+    const privateApi = usePrivateApi()
+    
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data)
+        console.log(classid);
+        const assignmentData = {
+            title: data.title,deadline:data.deadline,description:data.description,classId:classid
+        }
 
+
+        const dataItem = await privateApi.post("/assignment",assignmentData)
+        console.log(dataItem);
+        if(dataItem.data.insertedId){
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Assignment has been created",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+       
 
     }
     return (
@@ -18,6 +41,7 @@ const PopUp = () => {
                 <p className="text-purple-700"> <AiOutlineProfile /></p>
                 <h1 className="text-lg text-gray-800 text-bold">Assignment</h1>
             </div>
+
             <div className="card shrink-0 w-full  shadow-2xl ">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 

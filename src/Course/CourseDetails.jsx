@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { classRoomcontext } from "../Providers/AuthContext";
 import Swal from "sweetalert2";
+// const { ObjectId } = require('mongodb');
+
 
 
 const CourseDetails = () => {
@@ -21,7 +23,6 @@ const CourseDetails = () => {
         }
 
     })
-
     const enrollClass = async(id)=>{
         const enrollData = {user:user?.email,classId:id}
         const res = await publicApi.post("/student/enroll",enrollData)

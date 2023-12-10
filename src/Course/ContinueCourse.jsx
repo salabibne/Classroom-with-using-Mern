@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import usePublicApi from "../Hooks/usePublicApi";
 
 
@@ -8,6 +8,7 @@ const ContinueCourse = () => {
     const publicApi = usePublicApi()
     const { data: classAssignments = [], refetch } = useQuery({
         queryKey: ["enrollClass"],
+        
         queryFn: async () => {
             const res = await publicApi.get(`/student/continueCourse/${id}`)
             return res.data;
@@ -16,19 +17,28 @@ const ContinueCourse = () => {
     return (
         <div style={{ backgroundColor: 'rgb(34, 51, 59)' }}>
             <div className="py-14 flex">
-                <div className="w-3/4 border-r-4 border-indigo-500 grid grid-cols-2">
-                    {  
+                <div className="w-1/4  items-center justify-center flex flex-col space-y-4 mr-4">
+                    <button className="btn w-full">Class</button>
+                    <button className="btn  w-full">Assignments</button>
+                    <button className="btn  w-full">Evaluation</button>
+                   
+                </div>
+                <div className="w-3/4 border-l-4 border-indigo-500 grid grid-cols-2">
+                    {
                         classAssignments.map(ca => <div key={ca._id} className="card w-96 bg-base-100 shadow-xl ml-10 mt-16">
                             <div className="card-body">
                                 <h2 className="card-title font-bold">{ca.title}</h2>
                                 <h2 className="card-title ">
                                     <div className="badge badge-info gap-2">
-                                        
-                                       DeadLine : {ca.deadline}
+
+                                        DeadLine : {ca.deadline}
                                     </div>
                                 </h2>
+                                
 
-                          
+                                <Link to ={`/students/doAssignments/${ca._id}`}><button className="w-full btn mt-2 px-3 bg-purple-600">Do Assignments</button></Link>
+
+                                
 
 
                             </div>
@@ -36,7 +46,7 @@ const ContinueCourse = () => {
                     }
 
                 </div>
-                <div className="w-1/4">p</div>
+
             </div>
         </div>
     );

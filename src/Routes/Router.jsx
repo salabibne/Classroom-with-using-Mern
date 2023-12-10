@@ -25,6 +25,7 @@ import PopUp from "../Dashbord/PopUp/PopUp";
 import CourseDetails from "../Course/CourseDetails";
 import MyEnrollClass from "../Dashbord/MyEnrollClass/MyEnrollClass";
 import ContinueCourse from "../Course/ContinueCourse";
+import DoASsignments from "../Course/DoASsignments";
 
   const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ import ContinueCourse from "../Course/ContinueCourse";
         {
           path:"/student/continueCourse/:id",
           element:<PrivateRoutes><ContinueCourse></ContinueCourse></PrivateRoutes>
+        },
+        {
+          path:"/students/doAssignments/:id",
+          element:<PrivateRoutes><DoASsignments></DoASsignments></PrivateRoutes>
         }
       ]
     },

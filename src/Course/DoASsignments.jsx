@@ -1,13 +1,18 @@
 import { useParams } from "react-router-dom";
 import usePublicApi from "../Hooks/usePublicApi";
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { classRoomcontext } from "../Providers/AuthContext";
+import usePrivateApi from "../Hooks/usePrivateApi";
+import Swal from "sweetalert2";
 
 
 const DoASsignments = () => {
 
-
+    const {user} = useContext(classRoomcontext)
     const { id } = useParams()
     const publicApi = usePublicApi()
+    const privateApi = usePrivateApi()
     const { data: doAssignments = [], refetch } = useQuery({
         queryKey: ["enrollClass"],
 
@@ -17,14 +22,31 @@ const DoASsignments = () => {
         }
     })
 
-    const submitAns = e => {
+    const getAns =  async(e)=> {
         e.preventDefault()
         alert("must submit public link")
         const answer = e.target.answer.value;
+        // console.log(answer);
+        const submitAns = {answer:answer,assignmentId:id,student:user.email}
+
+        const res =  await privateApi.post("/student/submitAns",submitAns)
+        if(res.data.insertedId){
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Assignment has been created",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+
         
-        console.log(answer);
+        
+
 
     }
+
+   
     return (
         <div style={{ backgroundColor: 'rgb(34, 51, 59)' }}>
             <div className="py-14 flex">
@@ -57,7 +79,7 @@ const DoASsignments = () => {
 
 
                     <div className="card shrink-0  max-w-sm shadow-2xl bg-base-100">
-                        <form  onSubmit={submitAns} className="card-body">
+                        <form  onSubmit={getAns} className="card-body">
                             <h1 className="bg-purple-800 p-2 text-white mx-auto font-bold rounded-md">Submit Your Answer</h1>
                             <div className="form-control">
                                 <label className="label">
@@ -67,6 +89,7 @@ const DoASsignments = () => {
                             </div>
 
                             <div className="form-control mt-6">
+                               
                                 <button  className="btn bg-purple-800 text-white">submit</button>
                             </div>
                         </form>

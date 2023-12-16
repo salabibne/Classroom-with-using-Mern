@@ -26,6 +26,7 @@ import CourseDetails from "../Course/CourseDetails";
 import MyEnrollClass from "../Dashbord/MyEnrollClass/MyEnrollClass";
 import ContinueCourse from "../Course/ContinueCourse";
 import DoASsignments from "../Course/DoASsignments";
+import EvaluateAssignment from "../Dashbord/EvaluteAssignment/EvaluateAssignment";
 
   const router = createBrowserRouter([
     {
@@ -107,6 +108,11 @@ import DoASsignments from "../Course/DoASsignments";
         {
           path:"/dashbord/postAssignment/:classid",
           element:<PopUp></PopUp>
+        },
+        {
+          path:"/dashbord/evaluateAssignment/:user",
+          element:<EvaluateAssignment></EvaluateAssignment>
+          
         },
         {
           path:"/dashbord/myEnrollClass",

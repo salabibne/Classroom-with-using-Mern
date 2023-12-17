@@ -27,6 +27,7 @@ import MyEnrollClass from "../Dashbord/MyEnrollClass/MyEnrollClass";
 import ContinueCourse from "../Course/ContinueCourse";
 import DoASsignments from "../Course/DoASsignments";
 import EvaluateAssignment from "../Dashbord/EvaluteAssignment/EvaluateAssignment";
+import AssignmentMarks from "../Course/AssignmentMarks";
 
   const router = createBrowserRouter([
     {
@@ -117,6 +118,10 @@ import EvaluateAssignment from "../Dashbord/EvaluteAssignment/EvaluateAssignment
         {
           path:"/dashbord/myEnrollClass",
           element:<MyEnrollClass></MyEnrollClass>
+        },
+        {
+          path: "/dashbord/getAssignmentMark/:user",
+          element:<AssignmentMarks></AssignmentMarks>
         }
 
        

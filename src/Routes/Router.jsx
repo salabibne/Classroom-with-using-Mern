@@ -28,6 +28,7 @@ import ContinueCourse from "../Course/ContinueCourse";
 import DoASsignments from "../Course/DoASsignments";
 import EvaluateAssignment from "../Dashbord/EvaluteAssignment/EvaluateAssignment";
 import AssignmentMarks from "../Course/AssignmentMarks";
+import Payment from "../Course/Payment/Payment";
 
   const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ import AssignmentMarks from "../Course/AssignmentMarks";
         {
           path:"/student/classDetails/:id",
           element:<PrivateRoutes><CourseDetails></CourseDetails></PrivateRoutes>
+        },
+        {
+          path:"/payment/class/:id",
+          element:<PrivateRoutes><Payment></Payment></PrivateRoutes>
         },
         {
           path:"/student/continueCourse/:id",

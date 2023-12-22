@@ -34,7 +34,7 @@ const Navbar = () => {
     }
     return (
         <div>
-            <div className="navbar  text-white fixed z-10   ">
+            <div style={{ backgroundColor: 'rgb(34, 21, 59)' }} className="navbar  text-white  z-10 sticky  ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn  lg:hidden">

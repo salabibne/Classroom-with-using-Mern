@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import usePublicApi from "../Hooks/usePublicApi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { classRoomcontext } from "../Providers/AuthContext";
 import Swal from "sweetalert2";
@@ -23,20 +23,20 @@ const CourseDetails = () => {
         }
 
     })
-    const enrollClass = async(id)=>{
-        const enrollData = {user:user?.email,classId:id}
-        const res = await publicApi.post("/student/enroll",enrollData)
-        if(res.data.insertedId){
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Assignment has been created",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        }
+    // const enrollClass = async(id)=>{
+    //     const enrollData = {user:user?.email,classId:id}
+    //     const res = await publicApi.post("/student/enroll",enrollData)
+    //     if(res.data.insertedId){
+    //         Swal.fire({
+    //             position: "top-end",
+    //             icon: "success",
+    //             title: "You successfully purchase the class!s",
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //           });
+    //     }
        
-    }
+    // }
     return (
         <div style={{ backgroundColor: 'rgb(34, 21, 59)' }} className="hero">
            <div  className="mt-12 p-14">
@@ -52,7 +52,7 @@ const CourseDetails = () => {
                        
                         <div className="card-actions  justify-center items-center">
                         <p className="text-lg"><span className="text-purple-800">price</span> : {classDetail.price}</p>
-                            <button onClick={()=>enrollClass(classDetail._id)} className="btn bg-purple-800 text-yellow-50 ">Enroll Now !</button>
+                            <Link to ={`/payment/class/${classDetail._id}?price=${classDetail.price}`}><button  className="btn bg-purple-800 text-yellow-50 ">Enroll Now !</button></Link>
                         </div>
                     </div>
                 </div>)

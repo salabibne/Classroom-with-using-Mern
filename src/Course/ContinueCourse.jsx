@@ -21,8 +21,7 @@ const ContinueCourse = () => {
         <div style={{ backgroundColor: 'rgb(34, 51, 59)' }}>
             <div className="py-14 flex">
                 <div className="w-1/4  items-center justify-center flex flex-col space-y-4 mr-4">
-                    <button className="btn w-full">Class</button>
-                    <button className="btn  w-full">Assignments</button>
+                  <button className="btn">Class Meterial</button>
                     <Link to = {`/dashbord/getAssignmentMark/${user.email}`}><button className="btn  w-full">Marks</button></Link>
                    
                 </div>

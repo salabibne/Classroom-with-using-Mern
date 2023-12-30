@@ -34,7 +34,7 @@ const DoASsignments = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Assignment has been created",
+                title: "Assignment has been submitted",
                 showConfirmButton: false,
                 timer: 1500
               });

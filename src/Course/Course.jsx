@@ -30,7 +30,7 @@ const Course = () => {
                     <p className="text-lg">price :{classreq.price}Tk</p>
                     
                    
-                    <p className="text-lg">Total EnrollMent:</p>
+                    
                     <Link to={`/student/classDetails/${classreq._id}`}><button disabled={classreq.status === "pending"} className="btn btn-outline w-full">SeeDetails & Enroll</button></Link>
                    
                    

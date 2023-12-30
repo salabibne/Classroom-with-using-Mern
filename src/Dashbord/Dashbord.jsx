@@ -59,11 +59,7 @@ const Dashbord = () => {
 
                                     All Classes</NavLink>
                             </li>
-                            <li className="text-white">
-                                <NavLink to="/dashbord/profile">
-
-                                    Profile</NavLink>
-                            </li>
+                           
                         </>
                     }
                     {
@@ -78,11 +74,7 @@ const Dashbord = () => {
 
                                     MyClass</NavLink>
                             </li>
-                            <li className="text-white">
-                                <NavLink to="/dashbord/teacheProfile">
-
-                                    Profile</NavLink>
-                            </li>
+                            
                         </>
                     }
                     {
@@ -92,11 +84,7 @@ const Dashbord = () => {
 
                                     My Enroll Class</NavLink>
                             </li>
-                            <li className="text-white">
-                                <NavLink to="/dashbord/studentProfile">
-
-                                    MyProfile</NavLink>
-                            </li>
+                           
                         </>
                     }
 

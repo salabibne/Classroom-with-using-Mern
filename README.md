@@ -5,6 +5,13 @@ ServerSide Link : https://github.com/salabibne/classroom_server_side
 email : admin@gmail.com
 passWord : 123456Aa!
 ### About Classroom-Project:
+**Login**
+1. Implemented Firebase Authentication.
+2. Implemented a Token System to ensure the right people are entering the website through verifying  tokens.
+   
+**API**
+1. use Axios  to make APIs(get, find,upsert,delete)
+
 **Admin Side**
 1. Admin can see the teaching Request and is responsible for approving or declining the request.
 2. Also responsible to make Admin among the users
@@ -19,5 +26,9 @@ passWord : 123456Aa!
 2.  also enables to see the course details and by the integration of **payment method(stripe**), they can also pay for the course.
 3. Can see the released assignment by the respective teacher and also submit the answer.
 4. They can also see the assignment marks after publishing the marks from the teacher.
+
+**Database**
+1. MomgoDb database uses.
+2. use aggregation pipeline for complex queries
 
 ***Feel free to share your thoughts on how we can improve and enhance this project. Whether it's a new feature, bug fix, or any other improvement, your input is welcome.***
